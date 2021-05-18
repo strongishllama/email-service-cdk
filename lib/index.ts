@@ -41,7 +41,7 @@ export class EmailService extends cdk.Construct {
 
     // Create the function that the queue will trigger.
     const queueTriggerFunction = new lambda.GoFunction(this, `${props.prefix}-function-${props.suffix}`, {
-      entry: "",
+      entry: "lambdas/trigger",
       initialPolicy: [
         new iam.PolicyStatement({
           actions: [
