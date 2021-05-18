@@ -32,11 +32,18 @@ export class EmailService extends cdk.Construct {
       }
     });
 
+    // Build array of principals from the sendMessageArns.
+    let sendMessagePrincipals: iam.ArnPrincipal[] = [];
+    props.sendMessageArns.forEach(s => {
+      sendMessagePrincipals.push(new iam.ArnPrincipal(s))
+    });
+
     // Give permission to add messages to the queue.
     emailQueue.addToResourcePolicy(new iam.PolicyStatement({
       actions: [
         'SQS:SendMessage'
       ],
+      principals: sendMessagePrincipals,
       resources: props.sendMessageArns
     }));
 
