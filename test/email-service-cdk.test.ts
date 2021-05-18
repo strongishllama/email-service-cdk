@@ -5,13 +5,13 @@ import * as EmailService from '../lib/index';
 test('SNS Topic Created', () => {
   const app = new cdk.App();
   // GIVEN
-  const stack = new cdk.Stack(app, "TestStack");
+  const stack = new cdk.Stack(app, 'TestStack');
   // WHEN
   new EmailService.EmailService(stack, 'MyTestConstruct', {
-    prefix: "",
-    suffix: "",
+    prefix: '',
+    suffix: '',
     sendMessageArns: []
   });
   // THEN
-  expectCDK(stack).to(countResources("AWS::SNS::Topic",0));
+  expectCDK(stack).to(countResources('AWS::SNS::Topic',0));
 });
