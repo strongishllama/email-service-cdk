@@ -9,8 +9,7 @@ test('SNS Topic Created', () => {
   // WHEN
   new EmailService.EmailService(stack, 'MyTestConstruct', {
     prefix: '',
-    suffix: '',
-    sendMessageArns: []
+    suffix: ''
   });
   // THEN
   expectCDK(stack).to(countResources('AWS::SNS::Topic',0));
