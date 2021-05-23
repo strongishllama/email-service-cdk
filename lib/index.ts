@@ -17,24 +17,22 @@ export interface EmailServiceProps {
 }
 
 export class EmailService extends cdk.Construct {
-  public queueArn: string;
-  public deadLetterQueueArn: string;
+  public queue: sqs.Queue;
+  public deadLetterQueue: sqs.Queue;
 
   constructor(scope: cdk.Construct, id: string, props: EmailServiceProps) {
     super(scope, id);
 
     // Create the dead letter queue.
-    const deadLetterQueue = new sqs.Queue(this, `${props.prefix}-dead-letter-queue-${props.suffix}`);
-    this.deadLetterQueueArn = deadLetterQueue.queueArn;
+    this.deadLetterQueue = new sqs.Queue(this, `${props.prefix}-dead-letter-queue-${props.suffix}`);
 
     // Create the queue.
-    const queue = new sqs.Queue(this, `${props.prefix}-queue-${props.suffix}`, {
+    this.queue = new sqs.Queue(this, `${props.prefix}-queue-${props.suffix}`, {
       deadLetterQueue: {
-        queue: deadLetterQueue,
+        queue: this.deadLetterQueue,
         maxReceiveCount: 3
       }
     });
-    this.queueArn = queue.queueArn;
 
     // Create the function that the queue will trigger.
     const queueTriggerFunction = new lambda.GoFunction(this, `${props.prefix}-function-${props.suffix}`, {
@@ -52,8 +50,8 @@ export class EmailService extends cdk.Construct {
     });
 
     // Give the trigger function permission to consume the queue's messages.
-    queue.grantConsumeMessages(queueTriggerFunction);
+    this.queue.grantConsumeMessages(queueTriggerFunction);
     // Add the queue as an event source for the trigger function.
-    queueTriggerFunction.addEventSource(new lambda_events.SqsEventSource(queue));
+    queueTriggerFunction.addEventSource(new lambda_events.SqsEventSource(this.queue));
   }
 }
