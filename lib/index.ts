@@ -1,6 +1,6 @@
 import * as cdk from '@aws-cdk/core';
 import * as iam from '@aws-cdk/aws-iam';
-import * as lambda from '@aws-cdk/aws-lambda-go';
+import * as go_lambda from '@aws-cdk/aws-lambda-go';
 import * as lambda_events from '@aws-cdk/aws-lambda-event-sources';
 import * as sqs from '@aws-cdk/aws-sqs';
 import * as path from 'path';
@@ -35,7 +35,7 @@ export class EmailService extends cdk.Construct {
     });
 
     // Create the function that the queue will trigger.
-    const queueTriggerFunction = new lambda.GoFunction(this, `${props.prefix}-function-${props.suffix}`, {
+    const queueTriggerFunction = new go_lambda.GoFunction(this, `${props.prefix}-function-${props.suffix}`, {
       entry: path.join(__dirname, '../lambdas/trigger'),
       initialPolicy: [
         new iam.PolicyStatement({
