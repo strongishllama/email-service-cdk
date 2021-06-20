@@ -1,6 +1,6 @@
 {
   "name": "@strongishllama/email-service-cdk",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/strongishllama/email-service-cdk.git"

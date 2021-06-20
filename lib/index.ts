@@ -9,11 +9,17 @@ export interface EmailServiceProps {
   /**
    * The prefix that will be added at the start of every resource id.
    */
-  prefix: string;
+  readonly prefix: string;
   /**
    * The suffix that will be added at the end of every resource id.
    */
-  suffix: string;
+  readonly suffix: string;
+  /**
+   * The default wait time for ReceiveMessage calls on the queue.
+   *
+   * @default 0
+   */
+  readonly receiveMessageWaitTime?: cdk.Duration;
 }
 
 export class EmailService extends cdk.Construct {
@@ -23,15 +29,13 @@ export class EmailService extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props: EmailServiceProps) {
     super(scope, id);
 
-    // Create the dead letter queue.
-    this.deadLetterQueue = new sqs.Queue(this, `${props.prefix}-dead-letter-queue-${props.suffix}`);
-
-    // Create the queue.
+    // Create the queue with a dead letter queue.
     this.queue = new sqs.Queue(this, `${props.prefix}-queue-${props.suffix}`, {
+      receiveMessageWaitTime: props.receiveMessageWaitTime ?? cdk.Duration.seconds(0),
       deadLetterQueue: {
-        queue: this.deadLetterQueue,
+        queue: new sqs.Queue(this, `${props.prefix}-dead-letter-queue-${props.suffix}`),
         maxReceiveCount: 3
-      }
+      },
     });
 
     // Create the function that the queue will trigger.
