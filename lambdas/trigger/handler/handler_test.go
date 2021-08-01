@@ -15,7 +15,9 @@ import (
 )
 
 func TestHandle(t *testing.T) {
-	require.NoError(t, env.Load("../../../.env"))
+	if err := env.Load(".env"); err != nil {
+		t.Log(".env file not found, ignore this if running in CI/CD Pipeline")
+	}
 
 	to, err := env.MustGet("TEST_EMAIL_RECIPIENTS")
 	require.NoError(t, err)
