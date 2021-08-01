@@ -23,7 +23,7 @@ func TestHandle(t *testing.T) {
 	from, err := env.MustGet("TEST_EMAIL_FROM")
 	require.NoError(t, err)
 
-	require.NoError(t, email.Initialize(env.Get("AWS_PROFILE", "default"), env.Get("AWS_REGION", "ap-southeast-2")))
+	require.NoError(t, email.Initialize(context.Background(), env.Get("AWS_PROFILE", "default"), env.Get("AWS_REGION", "ap-southeast-2")))
 
 	body, err := json.Marshal(&email.Data{
 		To:          strings.Split(to, ","),

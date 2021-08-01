@@ -1,6 +1,6 @@
 {
   "name": "@strongishllama/email-service-cdk",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/strongishllama/email-service-cdk.git"
@@ -13,7 +13,11 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.109.0",
+    "@aws-cdk/assert": "^1.116.0",
+    "@aws-cdk/aws-lambda-event-sources": "^1.116.0",
+    "@aws-cdk/aws-lambda-go": "^1.116.0",
+    "@aws-cdk/aws-sqs": "^1.116.0",
+    "@aws-cdk/core": "^1.116.0",
     "@types/jest": "^26.0.10",
     "@types/node": "10.17.27",
     "jest": "^26.4.2",
@@ -21,12 +25,9 @@
     "typescript": "~3.9.7"
   },
   "peerDependencies": {
-    "@aws-cdk/core": "1.109.0"
-  },
-  "dependencies": {
-    "@aws-cdk/aws-lambda-event-sources": "^1.109.0",
-    "@aws-cdk/aws-lambda-go": "^1.109.0",
-    "@aws-cdk/aws-sqs": "^1.109.0",
-    "@aws-cdk/core": "1.109.0"
+    "@aws-cdk/aws-lambda-event-sources": "^1.116.0",
+    "@aws-cdk/aws-lambda-go": "^1.116.0",
+    "@aws-cdk/aws-sqs": "^1.116.0",
+    "@aws-cdk/core": "^1.116.0"
   }
 }

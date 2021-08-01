@@ -1,0 +1,66 @@
+name: Release
+on:
+  push:
+    tags:
+      - v*.*.*
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@strongishllama'
+    - uses: actions/setup-go@v2
+      with:
+        go-version: ^1.16
+    - uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-southeast-2
+    - name: Run Go tests
+      run: |
+        go test -v ./lambdas/...
+      env:
+        TEST_EMAIL_FROM: ${{ secrets.TEST_EMAIL_FROM }}
+        TEST_EMAIL_RECIPIENTS: ${{ secrets.TEST_EMAIL_RECIPIENTS }}
+    - name: Run NPM tests
+      run: |
+        npm run test
+  publish:
+    name: Publish
+    needs: [ test ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@strongishllama'
+    - name: Install (ignore scripts)
+      run: |
+        npm ci --ignore-scripts
+    - name: Build
+      run: |
+        npm run build
+    - name: Publish
+      run: |
+        npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  release:
+    name: Release
+    needs: [ publish ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Release
+      run: |
+        gh release create ${GITHUB_REF#refs/*/} --title ${GITHUB_REF#refs/*/}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
