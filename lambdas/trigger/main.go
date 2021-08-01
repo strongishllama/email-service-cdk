@@ -17,7 +17,7 @@ func main() {
 
 	if err := email.Initialize(context.Background(), "", ""); err != nil {
 		log.Error(log.Fields{
-			"error": xerror.Newf("failed to initialize the email package", err),
+			"error": xerror.Wrap("failed to initialize the email package", err),
 		})
 		os.Exit(1)
 	}
