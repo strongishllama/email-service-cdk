@@ -30,6 +30,7 @@ jobs:
         TEST_EMAIL_RECIPIENTS: ${{ secrets.TEST_EMAIL_RECIPIENTS }}
     - name: Run NPM tests
       run: |
+        npm ci --ignore-scripts
         npm run test
   publish:
     name: Publish
