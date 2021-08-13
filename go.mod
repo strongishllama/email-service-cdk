@@ -7,6 +7,6 @@ require (
 	github.com/gofor-little/aws-email v0.2.0
 	github.com/gofor-little/env v1.0.0
 	github.com/gofor-little/log v1.0.0
-	github.com/gofor-little/xerror v0.4.0
+	github.com/gofor-little/xerror v0.4.1
 	github.com/stretchr/testify v1.7.0
 )
