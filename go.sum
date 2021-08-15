@@ -44,8 +44,9 @@ github.com/gofor-little/log v1.0.0 h1:LjSouUz2ru4SDjJly7FK3n8oE/1hee/hCYsPn+yFA+
 github.com/gofor-little/log v1.0.0/go.mod h1:yx/9xgqLl5UQq9uLhLf/bKGHPPzLncNzJrn4Ol1KZlA=
 github.com/gofor-little/ts v0.2.6 h1:go4YET64JNw6a2HVwHs0dXSMNMx0v2ug6D29/6pitLs=
 github.com/gofor-little/ts v0.2.6/go.mod h1:oP+s46Ng2FGjr17VOrjn2akcltjHFdtB9QuGnM3g0g4=
-github.com/gofor-little/xerror v0.4.0 h1:PW2h/WBx9DA5iRyNDpR7CMykw2O+wJ8WIiK2yTYXkXc=
 github.com/gofor-little/xerror v0.4.0/go.mod h1:wjsFMng4jjalKHCSIocghCPYXEHqdpkb37EHTwrlj2I=
+github.com/gofor-little/xerror v0.4.1 h1:JKyvOoiCZgPGkLgO17m8jijOY11wlsGO8/OqlcZu2j0=
+github.com/gofor-little/xerror v0.4.1/go.mod h1:wjsFMng4jjalKHCSIocghCPYXEHqdpkb37EHTwrlj2I=
 github.com/google/go-cmp v0.5.4/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
 github.com/google/go-cmp v0.5.6 h1:BKbKCqvP6I+rmFHt06ZmyQtvB8xAkWdhFyr0ZUNZcxQ=
 github.com/google/go-cmp v0.5.6/go.mod h1:v8dTdLbMG2kIc/vJvl+f65V22dbkXbowE6jgT/gNBxE=
