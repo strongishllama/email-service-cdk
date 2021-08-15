@@ -13,11 +13,11 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "^1.116.0",
-    "@aws-cdk/aws-lambda-event-sources": "^1.116.0",
-    "@aws-cdk/aws-lambda-go": "^1.116.0",
-    "@aws-cdk/aws-sqs": "^1.116.0",
-    "@aws-cdk/core": "^1.116.0",
+    "@aws-cdk/assert": "^1.118.0",
+    "@aws-cdk/aws-lambda-event-sources": "^1.118.0",
+    "@aws-cdk/aws-lambda-go": "^1.118.0",
+    "@aws-cdk/aws-sqs": "^1.118.0",
+    "@aws-cdk/core": "^1.118.0",
     "@types/jest": "^26.0.24",
     "@types/node": "16.4.13",
     "jest": "^26.4.2",
@@ -25,9 +25,9 @@
     "typescript": "~4.3.5"
   },
   "peerDependencies": {
-    "@aws-cdk/aws-lambda-event-sources": "^1.116.0",
-    "@aws-cdk/aws-lambda-go": "^1.116.0",
-    "@aws-cdk/aws-sqs": "^1.116.0",
-    "@aws-cdk/core": "^1.116.0"
+    "@aws-cdk/aws-lambda-event-sources": "^1.118.0",
+    "@aws-cdk/aws-lambda-go": "^1.118.0",
+    "@aws-cdk/aws-sqs": "^1.118.0",
+    "@aws-cdk/core": "^1.118.0"
   }
 }

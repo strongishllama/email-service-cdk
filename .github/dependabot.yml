@@ -18,6 +18,6 @@ updates:
     timezone: Australia/Sydney
   ignore:
     # Ignore AWS CDK updates as they're determined by the project importing this package.
-    - dependency-name: "@aws-cdk"
+    - dependency-name: "@aws-cdk/*"
   target-branch: main
   open-pull-requests-limit: 10
