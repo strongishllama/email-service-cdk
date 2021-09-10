@@ -20,7 +20,7 @@
     "@aws-cdk/core": "^1.118.0",
     "@types/jest": "^27.0.1",
     "@types/node": "16.9.1",
-    "jest": "^26.4.2",
+    "jest": "^27.1.1",
     "ts-jest": "^26.2.0",
     "typescript": "~4.4.2"
   },
