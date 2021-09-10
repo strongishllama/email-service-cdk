@@ -39,8 +39,8 @@ github.com/go-mail/mail v2.3.1+incompatible/go.mod h1:VPWjmmNyRsWXQZHVHT3g0YbIIN
 github.com/gofor-little/aws-email v0.2.1 h1:Y9kOEvQPorH+67ZSHRs+0pg9lOQOwvv9b1uFb4DbXCM=
 github.com/gofor-little/aws-email v0.2.1/go.mod h1:fQ7OrEGJkLmVhBG7XItYs8bG9jAy9sYFsJR/SNx/NUc=
 github.com/gofor-little/env v1.0.0/go.mod h1:8OLro9C21TW5/k/mKEWSCxLE0G1awgoLGrUtLNeFZCU=
-github.com/gofor-little/env v1.0.1 h1:eyIs4TAz3N0oaNwFf0TFSRIuaHRDryLM5ccRZRuGYlw=
-github.com/gofor-little/env v1.0.1/go.mod h1:O9VC/sxOcJfu6DPWz6EUVULGJ6ufdy8QkfUZC7OVKQc=
+github.com/gofor-little/env v1.0.2 h1:N3GtFpkLn64muKUY+63LpOv+lBt4K1hwlK2+Tx2mw8U=
+github.com/gofor-little/env v1.0.2/go.mod h1:O9VC/sxOcJfu6DPWz6EUVULGJ6ufdy8QkfUZC7OVKQc=
 github.com/gofor-little/log v1.0.1 h1:UnluGvErRCHBGIrNjgkNbUGJvAqbtvqf/bXusUD24mU=
 github.com/gofor-little/log v1.0.1/go.mod h1:UJIyKE7bHqsJFUdMGqAFZq/L3QpXiPflJM4KZtEIvq8=
 github.com/gofor-little/ts v0.2.6 h1:go4YET64JNw6a2HVwHs0dXSMNMx0v2ug6D29/6pitLs=
