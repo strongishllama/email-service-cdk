@@ -7,10 +7,8 @@ test('Email Service', () => {
   const app = new cdk.App();
   const stack = new cdk.Stack(app, 'test-stack');
   const props: EmailServiceProps = {
-    namespace: 'test',
-    stage: 'test',
+    namespace: 'test'
   };
-  // WHEN
   new EmailService(stack, 'email-service', props);
   // THEN
   assert.expect(stack).to(assert.countResources('AWS::SQS::Queue', 2));

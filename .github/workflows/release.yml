@@ -32,8 +32,8 @@ jobs:
       run: |
         npm ci --ignore-scripts
         npm run test
-  publish:
-    name: Publish
+  publish-github-packages:
+    name: Publish GitHub Packages
     needs: [ test ]
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +56,7 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   release:
     name: Release
-    needs: [ publish ]
+    needs: [ publish-github-packages ]
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -65,3 +65,25 @@ jobs:
         gh release create ${GITHUB_REF#refs/*/} --title ${GITHUB_REF#refs/*/}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  publish-npm:
+    name: Publish NPM
+    needs: [ release ]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14.x'
+        registry-url: 'https://registry.npmjs.org'
+        scope: '@strongishllama'
+    - name: Install (ignore scripts)
+      run: |
+        npm ci --ignore-scripts
+    - name: Build
+      run: |
+        npm run build
+    - name: Publish
+      run: |
+        npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_AUTH_TOKEN }}

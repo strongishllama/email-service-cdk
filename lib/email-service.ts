@@ -12,13 +12,6 @@ export interface EmailServiceProps {
    */
   readonly namespace: string;
   /**
-   * Is used to avoid naming collisions between resources in different stages.
-   * As well as allowing them to be more easily identified.
-   *
-   * @example dev, test, staging, prod
-   */
-  readonly stage: string;
-  /**
    * The default wait time for ReceiveMessage calls on the queue.
    *
    * @default 0
@@ -34,16 +27,16 @@ export class EmailService extends cdk.Construct {
     super(scope, id);
 
     // Create the queue with a dead letter queue.
-    this.queue = new sqs.Queue(this, `${props.namespace}-queue-${props.stage}`, {
+    this.queue = new sqs.Queue(this, `${props.namespace}-queue`, {
       receiveMessageWaitTime: props.receiveMessageWaitTime ?? cdk.Duration.seconds(0),
       deadLetterQueue: {
-        queue: new sqs.Queue(this, `${props.namespace}-dead-letter-queue-${props.stage}`),
+        queue: new sqs.Queue(this, `${props.namespace}-dead-letter-queue`),
         maxReceiveCount: 3
       },
     });
 
     // Create the function that the queue will trigger.
-    const queueTriggerFunction = new go_lambda.GoFunction(this, `${props.namespace}-function-${props.stage}`, {
+    const queueTriggerFunction = new go_lambda.GoFunction(this, `${props.namespace}-function`, {
       entry: path.join(__dirname, '../lambdas/trigger'),
       initialPolicy: [
         new iam.PolicyStatement({
