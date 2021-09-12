@@ -9,8 +9,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 * Added Go 1.17 support.
 * Added package publishing to the NPM registry
 
-### Changed
+### Removed
 * **BREAKING**: Removed ```EmailServiceProps.stage``` property.
+* **BREAKING**: Removed ```EmailServiceProps.stage``` property from resource IDs.
 
 ## v0.2.2 - 2021-08-01
 ### Added
