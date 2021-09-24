@@ -6,15 +6,15 @@ require (
 	github.com/aws/aws-lambda-go v1.26.0
 	github.com/gofor-little/aws-email v0.2.1
 	github.com/gofor-little/env v1.0.2
-	github.com/gofor-little/log v1.0.2
+	github.com/gofor-little/log v1.0.3
 	github.com/gofor-little/xerror v0.5.1
 	github.com/stretchr/testify v1.7.0
 )
 
 require (
 	github.com/aws/aws-sdk-go-v2 v1.9.0 // indirect
-	github.com/aws/aws-sdk-go-v2/config v1.8.0 // indirect
-	github.com/aws/aws-sdk-go-v2/credentials v1.4.0 // indirect
+	github.com/aws/aws-sdk-go-v2/config v1.8.1 // indirect
+	github.com/aws/aws-sdk-go-v2/credentials v1.4.1 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.5.0 // indirect
 	github.com/aws/aws-sdk-go-v2/internal/ini v1.2.2 // indirect
 	github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs v1.7.0 // indirect
