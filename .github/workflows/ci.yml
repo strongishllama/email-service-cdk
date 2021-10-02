@@ -7,4 +7,4 @@ on:
 
 jobs:
   test:
-    uses: strongishllama/email-service-cdk/.github/workflows/test.yml@v1
+    uses: strongishllama/email-service-cdk/.github/workflows/test.yml
