@@ -13,6 +13,11 @@
 npm install @strongishllama/email-service-cdk
 ```
 
+You'll also need to install the following peer dependencies. See this [article](https://dev.to/aws-builders/correctly-defining-dependencies-in-l3-cdk-constructs-45p) for more information.
+```
+npm install @aws-cdk/aws-iam @aws-cdk/aws-lambda-go @aws-cdk/aws-lambda-event-sources
+```
+
 ## Example
 ```ts
 // Create email service.
