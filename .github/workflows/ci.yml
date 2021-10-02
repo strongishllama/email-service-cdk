@@ -6,16 +6,57 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
-    name: Test
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: golangci/golangci-lint-action@v2
+        with:
+          args: --config=.github/golangci.yml
+
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'go', 'javascript' ]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+    - uses: github/codeql-action/autobuild@v1
+    - uses: github/codeql-action/analyze@v1
+
+  npm-tests:
+    name: NPM Tests
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v2
       with:
         node-version: '14.x'
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@strongishllama'
+    - uses: actions/setup-go@v2
+      with:
+        go-version: ^1.16
+    - name: Install (ignore scripts)
+      run: npm ci --ignore-scripts
+    - name: Build
+      run: npm run build
+    - name: Run NPM tests
+      run: npm run test
+
+  go-tests:
+    name: Go Tests
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
     - uses: actions/setup-go@v2
       with:
         go-version: ^1.16
@@ -25,12 +66,7 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-southeast-2
     - name: Run Go tests
-      run: |
-        go test -v ./lambdas/...
+      run: go test -v ./...
       env:
         TEST_EMAIL_FROM: ${{ secrets.TEST_EMAIL_FROM }}
         TEST_EMAIL_RECIPIENTS: ${{ secrets.TEST_EMAIL_RECIPIENTS }}
-    - name: Run NPM tests
-      run: |
-        npm ci --ignore-scripts
-        npm run test

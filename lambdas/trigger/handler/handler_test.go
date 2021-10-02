@@ -15,7 +15,7 @@ import (
 )
 
 func TestHandle(t *testing.T) {
-	if err := env.Load(".env"); err != nil {
+	if err := env.Load("../../../.env"); err != nil {
 		t.Log(".env file not found, ignore this if running in CI/CD Pipeline")
 	}
 

@@ -1,0 +1,6 @@
+linters-settings:
+  errcheck:
+    exclude-functions:
+      - github.com/gofor-little/log.Debug
+      - github.com/gofor-little/log.Error
+      - github.com/gofor-little/log.Info
