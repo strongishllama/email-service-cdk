@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    uses: strongishllama/email-service-cdk/.github/workflows/test.yml@main
+    uses: strongishllama/email-service-cdk/.github/workflows/test.yml@${{ github.ref }}
     secrets:
       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
       aws-secret-access-key: {{ secrets.AWS_SECRET_ACCESS_KEY }}
