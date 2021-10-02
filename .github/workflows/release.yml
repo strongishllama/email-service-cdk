@@ -28,7 +28,7 @@ jobs:
       with:
         languages: ${{ matrix.language }}
     - uses: github/codeql-action/autobuild@v1
-      uses: github/codeql-action/analyze@v1
+    - uses: github/codeql-action/analyze@v1
 
   npm-tests:
     name: NPM Tests
