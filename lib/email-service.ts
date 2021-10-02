@@ -7,11 +7,6 @@ import * as path from 'path';
 
 export interface EmailServiceProps {
   /**
-   * Is used to avoid naming collisions between stacks and resources. As well as
-   * allowing them to be more easily identified.
-   */
-  readonly namespace: string;
-  /**
    * The default wait time for ReceiveMessage calls on the queue.
    *
    * @default 0
@@ -27,16 +22,16 @@ export class EmailService extends cdk.Construct {
     super(scope, id);
 
     // Create the queue with a dead letter queue.
-    this.queue = new sqs.Queue(this, `${props.namespace}-queue`, {
+    this.queue = new sqs.Queue(this, 'queue', {
       receiveMessageWaitTime: props.receiveMessageWaitTime ?? cdk.Duration.seconds(0),
       deadLetterQueue: {
-        queue: new sqs.Queue(this, `${props.namespace}-dead-letter-queue`),
+        queue: new sqs.Queue(this, 'dead-letter-queue'),
         maxReceiveCount: 3
       },
     });
 
     // Create the function that the queue will trigger.
-    const queueTriggerFunction = new go_lambda.GoFunction(this, `${props.namespace}-function`, {
+    const queueTriggerFunction = new go_lambda.GoFunction(this, 'function', {
       entry: path.join(__dirname, '../lambdas/trigger'),
       initialPolicy: [
         new iam.PolicyStatement({

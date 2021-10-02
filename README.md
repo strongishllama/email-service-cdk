@@ -8,6 +8,11 @@
 * Serverless email queue via SQS and SES.
 * Dead letter queue support.
 
+## Installation
+```
+npm install @strongishllama/email-service-cdk
+```
+
 ## Example
 ```ts
 // Create email service.
