@@ -22,7 +22,6 @@ npm install @aws-cdk/aws-iam @aws-cdk/aws-lambda-go @aws-cdk/aws-lambda-event-so
 ```ts
 // Create email service.
 new EmailService(stack, 'email-service', {
-  namespace: 'example',
-  stage: 'prod',
+  stage: 'prod'
 });
 ```
