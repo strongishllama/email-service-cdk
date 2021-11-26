@@ -7,7 +7,7 @@ require (
 	github.com/gofor-little/aws-email v0.2.1
 	github.com/gofor-little/env v1.0.2
 	github.com/gofor-little/log v1.0.4
-	github.com/gofor-little/xerror v0.5.1
+	github.com/gofor-little/xerror v1.0.0
 	github.com/stretchr/testify v1.7.0
 )
 
@@ -30,6 +30,7 @@ require (
 	github.com/go-mail/mail v2.3.1+incompatible // indirect
 	github.com/gofor-little/ts v0.2.7 // indirect
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
+	github.com/kr/text v0.2.0 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/yaml.v3 v3.0.0-20200615113413-eeeca48fe776 // indirect
