@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/aws/aws-lambda-go v1.27.1
 	github.com/gofor-little/aws-email v0.2.1
-	github.com/gofor-little/env v1.0.2
+	github.com/gofor-little/env v1.0.3
 	github.com/gofor-little/log v1.0.4
 	github.com/gofor-little/xerror v1.0.0
 	github.com/stretchr/testify v1.7.0
