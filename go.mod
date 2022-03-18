@@ -8,7 +8,7 @@ require (
 	github.com/gofor-little/env v1.0.3
 	github.com/gofor-little/log v1.0.4
 	github.com/gofor-little/xerror v1.0.0
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.1
 )
 
 require (
